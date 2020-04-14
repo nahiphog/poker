@@ -119,7 +119,7 @@ def straight_checker(those_7_cards):
 
 def straight_flush_checker(those_7_cards):
     if not(flush_checker(those_7_cards) == False) and not(straight_checker(those_7_cards) == False):
-        return straight_checker(those_7_cards)
+        return [9 , straight_checker(those_7_cards)[1] ]
 
     return False
 
