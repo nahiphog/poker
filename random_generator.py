@@ -1,11 +1,12 @@
 from random import randint, shuffle
+from tqdm import tqdm
 
 all_52_cards = [ ]
 suits = [ 'Diamonds' , 'Clubs', 'Hearts', 'Spades' ]
 all_value_cards = [  '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K' , 'A']
 score_values = [ [ all_value_cards[index], index + 1 ] for index in range(13) ]
 score_values.reverse()
-number_of_trials = int(1e4)
+number_of_trials = int(1e3)
 scoreboard = [0,0,0]
 
 def refresh_all_cards():
@@ -341,7 +342,7 @@ def hand_ranking(player_cards, dealt_five_cards):
     
     return [1 ]
 
-def run_this_trial():
+def run_heads_up():
     global scoreboard, all_52_cards, hero_hole_cards, villain_hole_cards
 
     hero_hole_cards, villain_hole_cards = [], []
@@ -434,9 +435,9 @@ def run_this_trial():
 
             comparing_equal_hand_ranking(hero_high_card, villain_high_card)
 
-for _ in range(number_of_trials): run_this_trial()
+for _ in tqdm( range(number_of_trials) ): run_heads_up()
 
-print(f"Number of trials: \t {number_of_trials}")
-print(f"Hero won: \t {scoreboard[0]}")
-print(f"Villain won: \t {scoreboard[1]}")
-print(f"It's a draw: \t {scoreboard[2]}")
+print(f"Number of trials: \t {number_of_trials:,}")
+print(f"Hero won: \t\t {scoreboard[0]:,}")
+print(f"Villain won: \t\t {scoreboard[1]:,}")
+print(f"It's a draw: \t\t {scoreboard[2]:,}")
