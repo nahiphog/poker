@@ -103,33 +103,18 @@ def flush_checker(those_7_cards):
 
 def straight_checker(those_7_cards):
     these_specific_face_cards = just_find_face_cards(those_7_cards)
+
+    modified_score_values = score_values
+    modified_score_values.append('A')
+
+    presence = []
+    for element in modified_score_values:
+        if element[0] in these_specific_face_cards: presence.append(1)
+        else: presence.append(0)
+
+    for index in range(10):
+        if sum(presence[index : index + 5]) == 5: return [ 5, 10 - index]
     
-    if set(these_specific_face_cards) == { 'A', '2' , '3', '4', '5' }:
-        return [5, 1]
-    if set(these_specific_face_cards) == { '2' , '3', '4', '5' , '6' }:
-        return [5, 2]
-    if set(these_specific_face_cards) == {  '3', '4', '5' , '6', '7' }:
-        return [5, 3]
-    if set(these_specific_face_cards) == { '4', '5' , '6', '7', '8' }:
-        return [5, 4]
-    if set(these_specific_face_cards) == {'5' , '6', '7', '8' , '9'}:
-        return [5, 5]
-
-    if set(these_specific_face_cards) == { '6', '7', '8' , '9', '10' }:
-        return [5, 6]
-
-    if set(these_specific_face_cards) == {  '7', '8' , '9', '10' , 'J' }:
-        return [5, 7]
-
-    if set(these_specific_face_cards) == {'8' , '9', '10' , 'J', 'Q' }:
-        return [5, 8]
-
-    if set(these_specific_face_cards) == {  '9', '10' , 'J', 'Q', 'K' }:
-        return [5, 9]
-
-    if set(these_specific_face_cards) == {  '10' , 'J', 'Q', 'K', 'A'}:
-        return [5, 10]
-
     return False
 
 def straight_flush_checker(those_7_cards):
