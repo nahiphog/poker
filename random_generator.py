@@ -437,6 +437,6 @@ def run_this_trial():
 for _ in range(number_of_trials): run_this_trial()
 
 print(f"Number of trials: \t {number_of_trials}")
-print(f"Hero wons: \t {scoreboard[0]}")
-print(f"Villain wons: \t {scoreboard[1]}")
+print(f"Hero won: \t {scoreboard[0]}")
+print(f"Villain won: \t {scoreboard[1]}")
 print(f"It's a draw: \t {scoreboard[2]}")
